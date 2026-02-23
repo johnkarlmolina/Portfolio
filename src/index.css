@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #09090b; /* zinc-950 */
+  color: #fafafa;           /* zinc-50 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Flying Background Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-50px) translateX(20px) scale(1.1) rotate(5deg);
+  }
+  66% {
+    transform: translateY(20px) translateX(-30px) scale(0.9) rotate(-5deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+.animate-float {
+  animation: float 20s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 15s ease-in-out infinite;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Smooth scrolling offset for fixed navbar */
+section {
+  scroll-margin-top: 72px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* Skill card proficiency bar animation */
+@keyframes growWidth {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: var(--target-width);
+  }
+}
+
+.proficiency-bar {
+  animation: growWidth 0.6s ease-out forwards;
+}
