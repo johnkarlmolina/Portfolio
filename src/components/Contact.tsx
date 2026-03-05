@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import SectionTitle from "./SectionTitle";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faLocationDot, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import emailjs from '@emailjs/browser';
+import swal from 'sweetalert';
 
 interface FormData {
     name: string;
@@ -28,7 +30,8 @@ export default function Contact() {
     const [errors, setErrors] = useState<Errors>({});
     const [touched, setTouched] = useState<Record<string, boolean>>({});
     const [isValid, setIsValid] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [sendError, setSendError] = useState<string | null>(null);
 
     useEffect(() => {
         const nameOk = form.name.trim().length >= 2;
@@ -51,14 +54,54 @@ export default function Contact() {
         setTouched((prev) => ({ ...prev, [e.target.name]: true }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setTouched({ name: true, email: true, message: true });
-        if (isValid) {
-            setSubmitted(true);
+        
+        if (!isValid) return;
+
+        setSending(true);
+        setSendError(null);
+
+        try {
+            // Replace these with your actual EmailJS credentials
+            const serviceId = 'service_2wn4q4r';
+            const templateId = 'template_lpy015f';
+            const publicKey = '5KagbjnSTS6OdbGeC';
+
+            const templateParams = {
+                from_name: form.name,
+                from_email: form.email,
+                message: form.message,
+                to_name: 'Florence', // Your name
+            };
+
+            await emailjs.send(serviceId, templateId, templateParams, publicKey);
+            
+            // Show success alert
+            swal({
+                title: "Message Sent!",
+                text: "Thanks for reaching out! I'll get back to you as soon as possible.",
+                icon: "success",
+                buttons: "Close" as any,
+            });
+            
             setForm({ name: "", email: "", message: "" });
             setTouched({});
-            setTimeout(() => setSubmitted(false), 5000);
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            
+            // Show error alert
+            swal({
+                title: "Oops!",
+                text: "Failed to send message. Please try again or contact me directly at molina.johnkarl.ponteras@gmail.com",
+                icon: "error",
+                buttons: "Okay" as any,
+            });
+            
+            setSendError('Failed to send message. Please try again or contact me directly.');
+        } finally {
+            setSending(false);
         }
     };
 
@@ -148,28 +191,11 @@ export default function Contact() {
 
                     {/* Right: Form */}
                     <div>
-                        {submitted ? (
-                            <div className="h-full flex flex-col items-center justify-center text-center bg-zinc-900/60 dark:bg-zinc-900/60 light:bg-emerald-50 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-10 shadow-2xl">
-                                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 animate-bounce">
-                                    <FontAwesomeIcon icon={faCheckCircle} className="text-emerald-400 text-3xl" />
-                                </div>
-                                <h3 className="font-bold text-white dark:text-white light:text-emerald-700 text-xl mb-3">Message received!</h3>
-                                <p className="text-zinc-400 dark:text-zinc-400 light:text-emerald-600 text-sm leading-relaxed mb-6">
-                                    Thanks for reaching out. I'll get back to you as soon as possible.
-                                </p>
-                                <button
-                                    onClick={() => setSubmitted(false)}
-                                    className="px-8 py-3 rounded-2xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20"
-                                >
-                                    Send another
-                                </button>
-                            </div>
-                        ) : (
-                            <form
-                                onSubmit={handleSubmit}
-                                noValidate
-                                className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-8 shadow-2xl space-y-6"
-                            >
+                        <form
+                            onSubmit={handleSubmit}
+                            noValidate
+                            className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-8 shadow-2xl space-y-6"
+                        >
                                 {/* Name */}
                                 <div>
                                     <label className="block text-sm font-bold text-zinc-400 dark:text-zinc-400 light:text-zinc-700 mb-2 ml-1">
@@ -233,19 +259,24 @@ export default function Contact() {
                                 {/* Submit */}
                                 <button
                                     type="submit"
-                                    disabled={!isValid}
+                                    disabled={!isValid || sending}
                                     className="w-full py-4 rounded-2xl text-sm font-bold transition-all duration-300 
                     disabled:bg-zinc-800 disabled:text-zinc-600 disabled:cursor-not-allowed 
                     enabled:bg-indigo-600 enabled:text-white enabled:hover:bg-indigo-500 enabled:shadow-lg enabled:shadow-indigo-500/20 active:scale-[0.98]"
                                 >
-                                    Send Message
+                                    {sending ? 'Sending...' : 'Send Message'}
                                 </button>
+
+                                {sendError && (
+                                    <p className="text-center text-sm text-red-500 font-medium">
+                                        {sendError}
+                                    </p>
+                                )}
 
                                 <p className="text-center text-xs text-zinc-500 font-medium">
                                     Direct Message
                                 </p>
                             </form>
-                        )}
                     </div>
                 </div>
             </div>
