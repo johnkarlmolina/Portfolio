@@ -1,4 +1,5 @@
 import SectionTitle from "./SectionTitle";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const bullets = [
     "Provided AV setup support including sound system configuration, projector setup, and laptop preparation for meetings and events.",
@@ -9,8 +10,10 @@ const bullets = [
 ];
 
 export default function Experience() {
+    const { ref, animationClass } = useScrollAnimation('push-in');
+    
     return (
-        <section id="experience" className="py-24 bg-transparent relative z-10">
+        <section id="experience" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Experience"
@@ -26,13 +29,13 @@ export default function Experience() {
 
                         <div className="sm:pl-16 relative">
                             {/* Timeline dot */}
-                            <div className="absolute left-4 top-6 w-4 h-4 rounded-full bg-indigo-500 border-4 border-zinc-950 shadow-lg shadow-indigo-500/20 hidden sm:block animate-pulse" />
+                            <div className="absolute left-4 top-6 w-4 h-4 rounded-full bg-indigo-500 border-4 border-zinc-950 dark:border-zinc-950 light:border-zinc-50 shadow-lg shadow-indigo-500/20 hidden sm:block animate-pulse" />
 
-                            <div className="bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl p-7 shadow-sm hover:shadow-indigo-500/5 hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300 group">
+                            <div className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-white backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-7 shadow-sm hover:shadow-indigo-500/10 hover:shadow-xl hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300 group">
                                 {/* Header */}
                                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-5">
                                     <div>
-                                        <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors">IT Intern</h3>
+                                        <h3 className="text-lg font-bold text-white dark:text-white light:text-zinc-900 group-hover:text-indigo-400 transition-colors">IT Intern</h3>
                                         <p className="text-indigo-400 font-semibold text-sm mt-0.5">
                                             Novaliches District Hospital
                                         </p>
@@ -50,17 +53,17 @@ export default function Experience() {
                                     {bullets.map((bullet, i) => (
                                         <li key={i} className="flex items-start gap-3">
                                             <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
-                                            <p className="text-zinc-400 text-sm leading-relaxed">{bullet}</p>
+                                            <p className="text-zinc-400 dark:text-zinc-400 light:text-zinc-600 text-sm leading-relaxed">{bullet}</p>
                                         </li>
                                     ))}
                                 </ul>
 
                                 {/* Tags */}
-                                <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-zinc-800">
+                                <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-zinc-800 dark:border-zinc-800 light:border-zinc-200">
                                     {["Front-End Dev", "IT Support", "AV Setup", "Troubleshooting"].map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-2.5 py-1 text-xs font-medium text-zinc-400 bg-zinc-800/50 border border-zinc-700 rounded-lg"
+                                            className="px-2.5 py-1 text-xs font-medium text-zinc-400 dark:text-zinc-400 light:text-zinc-600 bg-zinc-800/50 dark:bg-zinc-800/50 light:bg-zinc-100 border border-zinc-700 dark:border-zinc-700 light:border-zinc-300 rounded-lg"
                                         >
                                             {tag}
                                         </span>

@@ -11,7 +11,7 @@ import FlyingBackground from "./components/FlyingBackground";
 
 function App() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50 selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-zinc-950 dark:bg-zinc-950 light:bg-white text-zinc-50 dark:text-zinc-50 light:text-zinc-900 selection:bg-indigo-500/30 transition-colors duration-300">
       <FlyingBackground />
       <Navbar />
       <main>

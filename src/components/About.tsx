@@ -1,6 +1,11 @@
 import SectionTitle from "./SectionTitle";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 export default function About() {
+    const { ref, animationClass } = useScrollAnimation('slide-in');
+    
     const stats = [
         { value: "1+", label: "Year of Internship" },
         { value: "5+", label: "Projects Built" },
@@ -9,7 +14,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" className="py-24 bg-white">
+        <section id="about" ref={ref} className={`py-24 bg-white dark:bg-white light:bg-zinc-50 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="About Me"
@@ -73,12 +78,14 @@ export default function About() {
                         <div className="p-6 bg-zinc-50 border border-zinc-200 rounded-3xl space-y-3">
                             <h3 className="font-semibold text-zinc-800 text-sm uppercase tracking-wider mb-4">Quick Info</h3>
                             {[
-                                { icon: "📍", label: "Location", value: "Quezon City, Philippines" },
-                                { icon: "✉️", label: "Email", value: "molina.johnkarl.ponteras@gmail.com" },
-                                { icon: "📱", label: "Phone", value: "09064049845" },
+                                { icon: faLocationDot, label: "Location", value: "Quezon City, Philippines" },
+                                { icon: faEnvelope, label: "Email", value: "molina.johnkarl.ponteras@gmail.com" },
+                                { icon: faPhone, label: "Phone", value: "09064049845" },
                             ].map((info) => (
                                 <div key={info.label} className="flex items-start gap-3">
-                                    <span className="text-lg mt-0.5">{info.icon}</span>
+                                    <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+                                        <FontAwesomeIcon icon={info.icon} className="text-indigo-600 text-sm" />
+                                    </div>
                                     <div>
                                         <p className="text-xs text-zinc-400 font-medium uppercase tracking-wide">{info.label}</p>
                                         <p className="text-sm text-zinc-700 font-medium break-all">{info.value}</p>

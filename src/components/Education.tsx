@@ -1,4 +1,7 @@
 import SectionTitle from "./SectionTitle";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGraduationCap, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const education = [
     {
@@ -8,7 +11,7 @@ const education = [
         status: "In Progress",
         statusColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
         details: "Focused on software development, web technologies, and IT systems. Active in academic projects spanning front-end development and IoT.",
-        icon: "🎓",
+        icon: faGraduationCap,
     },
     {
         degree: "STEM Strand (Science, Technology, Engineering & Mathematics)",
@@ -17,13 +20,15 @@ const education = [
         status: "With Honors",
         statusColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
         details: "Graduated from the STEM strand with academic honors, laying a strong foundation in analytical thinking, mathematics, and applied sciences.",
-        icon: "🏆",
+        icon: faTrophy,
     },
 ];
 
 export default function Education() {
+    const { ref, animationClass } = useScrollAnimation('slide-in');
+    
     return (
-        <section id="education" className="py-24 bg-transparent relative z-10">
+        <section id="education" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Education"
@@ -35,19 +40,19 @@ export default function Education() {
                     {education.map((edu) => (
                         <div
                             key={edu.institution}
-                            className="group bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-indigo-500/5 hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300"
+                            className="group bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-white backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-indigo-500/10 hover:shadow-xl hover:border-indigo-500/30 hover:-translate-y-1 transition-all duration-300"
                         >
                             <div className="flex flex-col md:flex-row md:items-start gap-5">
                                 {/* Icon */}
-                                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
-                                    {edu.icon}
+                                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                    <FontAwesomeIcon icon={edu.icon} className="text-indigo-400 text-2xl" />
                                 </div>
 
                                 <div className="flex-1">
                                     {/* Header */}
                                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3">
                                         <div>
-                                            <h3 className="font-bold text-white text-base leading-snug group-hover:text-indigo-400 transition-colors">
+                                            <h3 className="font-bold text-white dark:text-white light:text-zinc-900 text-base leading-snug group-hover:text-indigo-400 transition-colors">
                                                 {edu.degree}
                                             </h3>
                                             <p className="text-indigo-400 font-semibold text-sm mt-0.5">
@@ -64,7 +69,7 @@ export default function Education() {
                                         </div>
                                     </div>
 
-                                    <p className="text-sm text-zinc-400 leading-relaxed">{edu.details}</p>
+                                    <p className="text-sm text-zinc-400 dark:text-zinc-400 light:text-zinc-600 leading-relaxed">{edu.details}</p>
                                 </div>
                             </div>
                         </div>

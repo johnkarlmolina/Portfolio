@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import SectionTitle from "./SectionTitle";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone, faLocationDot, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 interface FormData {
     name: string;
@@ -18,6 +22,8 @@ function validateEmail(email: string) {
 }
 
 export default function Contact() {
+    const { ref, animationClass } = useScrollAnimation('push-out');
+    
     const [form, setForm] = useState<FormData>({ name: "", email: "", message: "" });
     const [errors, setErrors] = useState<Errors>({});
     const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -57,13 +63,13 @@ export default function Contact() {
     };
 
     const inputClass = (field: keyof Errors) =>
-        `w-full px-4 py-3 rounded-2xl border text-sm text-zinc-200 placeholder-zinc-600 bg-zinc-950 transition-all duration-300 outline-none focus:ring-4 ${errors[field]
+        `w-full px-4 py-3 rounded-2xl border text-sm text-zinc-200 dark:text-zinc-200 light:text-zinc-900 placeholder-zinc-600 dark:placeholder-zinc-600 light:placeholder-zinc-400 bg-zinc-950 dark:bg-zinc-950 light:bg-white transition-all duration-300 outline-none focus:ring-4 ${errors[field]
             ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500"
-            : "border-zinc-800 focus:ring-indigo-500/10 focus:border-indigo-500"
+            : "border-zinc-800 dark:border-zinc-800 light:border-zinc-300 focus:ring-indigo-500/10 focus:border-indigo-500"
         }`;
 
     return (
-        <section id="contact" className="py-24 bg-transparent relative z-10">
+        <section id="contact" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Contact"
@@ -75,8 +81,8 @@ export default function Contact() {
                     {/* Left: Info */}
                     <div className="space-y-6">
                         <div>
-                            <h3 className="font-bold text-white text-xl mb-4">Let's work together</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed">
+                            <h3 className="font-bold text-white dark:text-white light:text-zinc-900 text-xl mb-4">Let's work together</h3>
+                            <p className="text-zinc-400 dark:text-zinc-400 light:text-zinc-600 text-sm leading-relaxed">
                                 I'm open to freelance opportunities, internships, and collaborations.
                                 Whether it's a quick question or a detailed project brief, my inbox is always open.
                             </p>
@@ -85,37 +91,39 @@ export default function Contact() {
                         <div className="space-y-4">
                             {[
                                 {
-                                    icon: "✉️",
+                                    icon: faEnvelope,
                                     label: "Email",
                                     value: "molina.johnkarl.ponteras@gmail.com",
                                     href: "mailto:molina.johnkarl.ponteras@gmail.com",
                                 },
                                 {
-                                    icon: "📱",
+                                    icon: faPhone,
                                     label: "Phone",
                                     value: "09064049845",
                                     href: "tel:09064049845",
                                 },
                                 {
-                                    icon: "📍",
+                                    icon: faLocationDot,
                                     label: "Location",
                                     value: "Quezon City, Philippines",
                                     href: undefined,
                                 },
                             ].map((item) => (
-                                <div key={item.label} className="flex items-start gap-4 p-5 bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl group hover:border-indigo-500/30 transition-all duration-300">
-                                    <span className="text-2xl mt-0.5 group-hover:scale-110 transition-transform">{item.icon}</span>
+                                <div key={item.label} className="flex items-start gap-4 p-5 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl group hover:border-indigo-500/30 hover:shadow-lg transition-all duration-300">
+                                    <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <FontAwesomeIcon icon={item.icon} className="text-indigo-400 text-xl" />
+                                    </div>
                                     <div>
-                                        <p className="text-xs text-zinc-500 font-bold uppercase tracking-widest mb-1">{item.label}</p>
+                                        <p className="text-xs text-zinc-500 dark:text-zinc-500 light:text-zinc-400 font-bold uppercase tracking-widest mb-1">{item.label}</p>
                                         {item.href ? (
                                             <a
                                                 href={item.href}
-                                                className="text-sm font-semibold text-zinc-200 hover:text-indigo-400 transition-colors break-all"
+                                                className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700 hover:text-indigo-400 transition-colors break-all"
                                             >
                                                 {item.value}
                                             </a>
                                         ) : (
-                                            <p className="text-sm font-semibold text-zinc-200">{item.value}</p>
+                                            <p className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700">{item.value}</p>
                                         )}
                                     </div>
                                 </div>
@@ -125,13 +133,13 @@ export default function Contact() {
                                 href="https://github.com/johnkarlmolina"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-4 p-5 bg-zinc-900 border border-zinc-800 text-white rounded-3xl hover:bg-zinc-800 transition-all duration-300 shadow-xl shadow-black/20"
+                                className="flex items-center gap-4 p-5 bg-zinc-900 dark:bg-zinc-900 light:bg-zinc-100 border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 text-white dark:text-white light:text-zinc-900 rounded-3xl hover:bg-zinc-800 dark:hover:bg-zinc-800 light:hover:bg-zinc-200 transition-all duration-300 shadow-xl shadow-black/20"
                             >
-                                <svg className="w-6 h-6 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                                </svg>
+                                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center">
+                                    <FontAwesomeIcon icon={faGithub} className="text-indigo-400 text-xl" />
+                                </div>
                                 <div>
-                                    <p className="text-xs text-zinc-500 font-bold uppercase tracking-widest">GitHub</p>
+                                    <p className="text-xs text-zinc-500 dark:text-zinc-500 light:text-zinc-400 font-bold uppercase tracking-widest">GitHub</p>
                                     <p className="text-sm font-bold">github.com/johnkarlmolina</p>
                                 </div>
                             </a>
@@ -141,12 +149,12 @@ export default function Contact() {
                     {/* Right: Form */}
                     <div>
                         {submitted ? (
-                            <div className="h-full flex flex-col items-center justify-center text-center bg-zinc-900/60 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-10 shadow-2xl">
-                                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-3xl animate-bounce">
-                                    ✅
+                            <div className="h-full flex flex-col items-center justify-center text-center bg-zinc-900/60 dark:bg-zinc-900/60 light:bg-emerald-50 backdrop-blur-md border border-emerald-500/30 rounded-3xl p-10 shadow-2xl">
+                                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 animate-bounce">
+                                    <FontAwesomeIcon icon={faCheckCircle} className="text-emerald-400 text-3xl" />
                                 </div>
-                                <h3 className="font-bold text-white text-xl mb-3">Message received!</h3>
-                                <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+                                <h3 className="font-bold text-white dark:text-white light:text-emerald-700 text-xl mb-3">Message received!</h3>
+                                <p className="text-zinc-400 dark:text-zinc-400 light:text-emerald-600 text-sm leading-relaxed mb-6">
                                     Thanks for reaching out. I'll get back to you as soon as possible.
                                 </p>
                                 <button
@@ -160,11 +168,11 @@ export default function Contact() {
                             <form
                                 onSubmit={handleSubmit}
                                 noValidate
-                                className="bg-zinc-900/40 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 shadow-2xl space-y-6"
+                                className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-8 shadow-2xl space-y-6"
                             >
                                 {/* Name */}
                                 <div>
-                                    <label className="block text-sm font-bold text-zinc-400 mb-2 ml-1">
+                                    <label className="block text-sm font-bold text-zinc-400 dark:text-zinc-400 light:text-zinc-700 mb-2 ml-1">
                                         Full Name <span className="text-indigo-500">*</span>
                                     </label>
                                     <input
@@ -184,7 +192,7 @@ export default function Contact() {
 
                                 {/* Email */}
                                 <div>
-                                    <label className="block text-sm font-bold text-zinc-400 mb-2 ml-1">
+                                    <label className="block text-sm font-bold text-zinc-400 dark:text-zinc-400 light:text-zinc-700 mb-2 ml-1">
                                         Email Address <span className="text-indigo-500">*</span>
                                     </label>
                                     <input
@@ -204,7 +212,7 @@ export default function Contact() {
 
                                 {/* Message */}
                                 <div>
-                                    <label className="block text-sm font-bold text-zinc-400 mb-2 ml-1">
+                                    <label className="block text-sm font-bold text-zinc-400 dark:text-zinc-400 light:text-zinc-700 mb-2 ml-1">
                                         Message <span className="text-indigo-500">*</span>
                                     </label>
                                     <textarea
@@ -234,7 +242,7 @@ export default function Contact() {
                                 </button>
 
                                 <p className="text-center text-xs text-zinc-500 font-medium">
-                                    🔒 Direct and secure communication channel.
+                                    Direct Message
                                 </p>
                             </form>
                         )}
