@@ -54,7 +54,7 @@ export default function Resume() {
                                 John Karl Molina
                             </h3>
                             <p className="text-indigo-400 font-semibold text-base mb-1">
-                                Full Stack Developer
+                                Front-End Developer
                             </p>
                             <p className="text-zinc-400 dark:text-zinc-400 light:text-zinc-600 text-sm">
                                 Information Technology Student

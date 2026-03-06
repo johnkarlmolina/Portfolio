@@ -75,15 +75,19 @@ export default function Projects() {
                                 </div>
 
                                 {/* Action buttons */}
-                                <div className="mt-auto pt-4 border-t border-zinc-800 dark:border-zinc-800 light:border-zinc-200">
-                                    <a
-                                        href={project.github ?? "#"}
-                                        className="w-full text-center py-3 px-4 rounded-xl border border-zinc-800 dark:border-zinc-800 light:border-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 text-sm font-semibold hover:border-indigo-500 hover:text-indigo-400 transition-all duration-200 flex items-center justify-center gap-2"
-                                    >
-                                        <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
-                                        GitHub
-                                    </a>
-                                </div>
+                                {project.github && (
+                                    <div className="mt-auto pt-4 border-t border-zinc-800 dark:border-zinc-800 light:border-zinc-200">
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full text-center py-3 px-4 rounded-xl border border-zinc-800 dark:border-zinc-800 light:border-zinc-300 text-zinc-300 dark:text-zinc-300 light:text-zinc-700 text-sm font-semibold hover:border-indigo-500 hover:text-indigo-400 transition-all duration-200 flex items-center justify-center gap-2"
+                                        >
+                                            <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
+                                            GitHub
+                                        </a>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}

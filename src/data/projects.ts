@@ -22,7 +22,7 @@ export const projects: Project[] = [
             "A modern, visually engaging landing page for a music-themed brand built with React and Tailwind CSS, featuring smooth animations and a responsive layout.",
         techStack: ["React", "Tailwind CSS"],
         liveDemo: "#",
-        github: "#",
+        github: "https://github.com/johnkarlmolina/ritmo-2.0.git",
     },
     {
         title: "Ticketing System",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
         techStack: ["Express.js", "jQuery", "Tailwind CSS"],
         role: "Front-End Developer",
         liveDemo: "#",
-        github: "#",
+        github: "hhttps://github.com/tianmrpg/Ticketing-System-NDH.git",
     },
     {
         title: "Inventory System",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
         techStack: ["Express.js", "jQuery", "Tailwind CSS"],
         role: "Front-End Developer",
         liveDemo: "#",
-        github: "#",
+        github: "https://github.com/johnkarlmolina/INVENTORY.git",
     },
     {
         title: "IoT Parking Diorama",
@@ -48,6 +48,5 @@ export const projects: Project[] = [
             "A physical prototype of a smart parking system using Arduino, IR sensors, servo motors, LCD display, and a buzzer to simulate automated parking slot detection.",
         techStack: ["Arduino", "IR Sensor", "Servo Motor", "LCD", "Buzzer"],
         liveDemo: "#",
-        github: "#",
     },
 ];
