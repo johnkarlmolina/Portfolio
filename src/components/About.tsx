@@ -14,7 +14,7 @@ export default function About() {
     ];
 
     return (
-        <section id="about" ref={ref} className={`py-24 bg-white dark:bg-white light:bg-zinc-50 ${animationClass}`}>
+        <section id="about" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-white dark:bg-white light:bg-zinc-50 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="About Me"
@@ -62,13 +62,13 @@ export default function About() {
                     {/* Stats + Info */}
                     <div className="space-y-6">
                         {/* Stats grid */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {stats.map((stat) => (
                                 <div
                                     key={stat.label}
                                     className="p-5 bg-zinc-50 border border-zinc-200 rounded-3xl text-center hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                                 >
-                                    <p className="text-3xl font-extrabold text-indigo-600 mb-1">{stat.value}</p>
+                                    <p className="text-2xl sm:text-3xl font-extrabold text-indigo-600 mb-1">{stat.value}</p>
                                     <p className="text-xs font-medium text-zinc-500 uppercase tracking-wider">{stat.label}</p>
                                 </div>
                             ))}
@@ -88,7 +88,7 @@ export default function About() {
                                     </div>
                                     <div>
                                         <p className="text-xs text-zinc-400 font-medium uppercase tracking-wide">{info.label}</p>
-                                        <p className="text-sm text-zinc-700 font-medium break-all">{info.value}</p>
+                                        <p className="text-sm text-zinc-700 font-medium break-words">{info.value}</p>
                                     </div>
                                 </div>
                             ))}

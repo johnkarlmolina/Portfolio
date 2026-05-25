@@ -26,7 +26,7 @@ export default function Projects() {
     const { ref, animationClass } = useScrollAnimation('push-in');
     
     return (
-        <section id="projects" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}>
+        <section id="projects" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Projects"
@@ -34,7 +34,7 @@ export default function Projects() {
                     subtitle="A selection of projects I've worked on — from web apps to IoT systems."
                 />
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project) => (
                         <div
                             key={project.title}

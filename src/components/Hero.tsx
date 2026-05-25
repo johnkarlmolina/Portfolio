@@ -12,7 +12,7 @@ export default function Hero() {
                 </div>
 
                 {/* Name */}
-                <h1 className="text-5xl md:text-7xl font-extrabold text-white dark:text-white light:text-zinc-900 mb-4 leading-tight tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white dark:text-white light:text-zinc-900 mb-4 leading-tight tracking-tight">
                     John Karl P.{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
                         Molina
@@ -20,7 +20,7 @@ export default function Hero() {
                 </h1>
 
                 {/* Role */}
-                <p className="text-xl md:text-2xl font-semibold text-zinc-300 dark:text-zinc-300 light:text-zinc-700 mb-6">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold text-zinc-300 dark:text-zinc-300 light:text-zinc-700 mb-6">
                     Front-End Developer &amp; UI Enthusiast
                 </p>
 
@@ -59,7 +59,7 @@ export default function Hero() {
                 </div>
 
                 {/* Scroll indicator */}
-                <div className="mt-20 flex flex-col items-center gap-2 text-zinc-500 dark:text-zinc-500 light:text-zinc-400 animate-bounce">
+                <div className="mt-12 sm:mt-16 md:mt-20 flex flex-col items-center gap-2 text-zinc-500 dark:text-zinc-500 light:text-zinc-400 animate-bounce">
                     <span className="text-xs font-medium tracking-widest uppercase">Scroll down</span>
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

@@ -28,7 +28,7 @@ export default function Education() {
     const { ref, animationClass } = useScrollAnimation('slide-in');
     
     return (
-        <section id="education" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
+        <section id="education" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Education"

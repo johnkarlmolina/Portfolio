@@ -112,7 +112,7 @@ export default function Contact() {
         }`;
 
     return (
-        <section id="contact" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}>
+        <section id="contact" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Contact"
@@ -120,7 +120,7 @@ export default function Contact() {
                     subtitle="Have a project in mind or just want to connect? Send me a message."
                 />
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
                     {/* Left: Info */}
                     <div className="space-y-6">
                         <div>
@@ -161,12 +161,12 @@ export default function Contact() {
                                         {item.href ? (
                                             <a
                                                 href={item.href}
-                                                className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700 hover:text-indigo-400 transition-colors break-all"
+                                                className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700 hover:text-indigo-400 transition-colors break-words"
                                             >
                                                 {item.value}
                                             </a>
                                         ) : (
-                                            <p className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700">{item.value}</p>
+                                            <p className="text-sm font-semibold text-zinc-200 dark:text-zinc-200 light:text-zinc-700 break-words">{item.value}</p>
                                         )}
                                     </div>
                                 </div>
@@ -194,7 +194,7 @@ export default function Contact() {
                         <form
                             onSubmit={handleSubmit}
                             noValidate
-                            className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-8 shadow-2xl space-y-6"
+                            className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6"
                         >
                                 {/* Name */}
                                 <div>

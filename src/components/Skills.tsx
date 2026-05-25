@@ -60,7 +60,7 @@ export default function Skills() {
     const { ref, animationClass } = useScrollAnimation('slide-out');
     
     return (
-        <section id="skills" ref={ref} className={`py-24 bg-transparent relative z-10 ${animationClass}`}>
+        <section id="skills" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-transparent relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Skills"
@@ -82,17 +82,17 @@ export default function Skills() {
                             <div className={`grid gap-6 max-w-5xl mx-auto ${
                                 group.skills.length === 1 
                                     ? 'grid-cols-1 max-w-sm' 
-                                    : 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4'
+                                    : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
                             }`}>
                                 {group.skills.map((skill) => (
                                     <div
                                         key={skill.name}
                                         className="group/card flex flex-col items-center justify-center p-8 rounded-2xl border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-white backdrop-blur-sm hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/20 hover:-translate-y-2 hover:scale-105 transition-all duration-300"
                                     >
-                                        <div className="w-16 h-16 mb-4 flex items-center justify-center group-hover/card:scale-125 group-hover/card:rotate-12 transition-all duration-300">
+                                        <div className="w-14 h-14 sm:w-16 sm:h-16 mb-4 flex items-center justify-center group-hover/card:scale-125 group-hover/card:rotate-12 transition-all duration-300">
                                             <FontAwesomeIcon 
                                                 icon={iconMap[skill.icon]} 
-                                                className="text-5xl text-indigo-400 group-hover/card:text-indigo-300"
+                                                className="text-4xl sm:text-5xl text-indigo-400 group-hover/card:text-indigo-300"
                                             />
                                         </div>
                                         <p className="text-base font-bold text-zinc-200 dark:text-zinc-200 light:text-zinc-900 text-center mb-4 group-hover/card:text-indigo-400 transition-colors">

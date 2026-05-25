@@ -13,7 +13,7 @@ export default function Experience() {
     const { ref, animationClass } = useScrollAnimation('push-in');
     
     return (
-        <section id="experience" ref={ref} className={`py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
+        <section id="experience" ref={ref} className={`py-16 sm:py-20 lg:py-24 bg-transparent dark:bg-transparent light:bg-zinc-50 relative z-10 ${animationClass}`}>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Experience"

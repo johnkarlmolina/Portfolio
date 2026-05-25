@@ -32,7 +32,7 @@ export default function Resume() {
         <section 
             id="resume" 
             ref={ref} 
-            className={`py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}
+            className={`py-16 sm:py-20 lg:py-24 bg-transparent dark:bg-transparent light:bg-white relative z-10 ${animationClass}`}
         >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
@@ -43,7 +43,7 @@ export default function Resume() {
 
                 <div className="max-w-3xl mx-auto">
                     {/* Main Resume Card */}
-                    <div className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-8 md:p-12 shadow-2xl">
+                    <div className="bg-zinc-900/40 dark:bg-zinc-900/40 light:bg-zinc-50 backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl">
                         
                         {/* Resume Icon/Visual */}
                         <div className="flex flex-col items-center text-center mb-8">
