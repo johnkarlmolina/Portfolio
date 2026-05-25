@@ -9,8 +9,8 @@ export default function Resume() {
     const handleDownload = () => {
         // Download the resume
         const link = document.createElement('a');
-        link.href = '/Molina_Resume.pdf';
-        link.download = 'John_Karl_Molina_Resume.pdf';
+        link.href = '/JohnKarl_Molina.pdf';
+        link.download = 'JohnKarl_Molina.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -18,7 +18,7 @@ export default function Resume() {
 
     const handleView = () => {
         // Open resume in new tab
-        window.open('/Molina_Resume.pdf', '_blank');
+        window.open('/JohnKarl_Molina.pdf', '_blank');
     };
 
     const highlights = [
