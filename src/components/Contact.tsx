@@ -84,6 +84,7 @@ export default function Contact() {
                 text: "Thanks for reaching out! I'll get back to you as soon as possible.",
                 icon: "success",
                 buttons: "Close" as any,
+                className: "portfolio-alert",
             });
             
             setForm({ name: "", email: "", message: "" });
@@ -97,6 +98,7 @@ export default function Contact() {
                 text: "Failed to send message. Please try again or contact me directly at molina.johnkarl.ponteras@gmail.com",
                 icon: "error",
                 buttons: "Okay" as any,
+                className: "portfolio-alert",
             });
             
             setSendError('Failed to send message. Please try again or contact me directly.');
