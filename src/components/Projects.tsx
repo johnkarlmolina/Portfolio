@@ -6,6 +6,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { GitHubCalendar } from 'react-github-calendar';
 
 const techColors: Record<string, string> = {
+    EJS: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    TypeScript: "bg-blue-500/10 text-blue-400 border-blue-500/20",
     HTML: "bg-orange-500/10 text-orange-400 border-orange-500/20",
     CSS: "bg-sky-500/10 text-sky-400 border-sky-500/20",
     JavaScript: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
@@ -31,8 +33,8 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionTitle
                     label="Projects"
-                    title="Things I've Built"
-                    subtitle="A selection of projects I've worked on — from web apps to IoT systems."
+                    title="Pinned GitHub Projects"
+                    subtitle="Repositories pinned on my GitHub profile, highlighted here as a quick snapshot of my work."
                 />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

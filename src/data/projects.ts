@@ -9,44 +9,45 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-        title: "Resort Booking & Management System",
+        title: "Ritmo",
         description:
-            "A full-featured web application for managing resort reservations, guest information, and room availability with an intuitive admin dashboard.",
-        techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-        liveDemo: "#",
-        github: "#",
+            "An Expo app for daily routine support focused on autism-friendly organization and engagement.",
+        techStack: ["TypeScript", "JavaScript"],
+        github: "https://github.com/johnkarlmolina/Ritmo",
     },
     {
         title: "Ritmo Landing Page",
         description:
-            "A modern, visually engaging landing page for a music-themed brand built with React and Tailwind CSS, featuring smooth animations and a responsive layout.",
-        techStack: ["React", "Tailwind CSS"],
-        liveDemo: "#",
-        github: "https://github.com/johnkarlmolina/ritmo-2.0.git",
+            "A promotional website built to advertise the Ritmo application and guide visitors to the mobile app.",
+        techStack: ["TypeScript", "CSS"],
+        github: "https://github.com/johnkarlmolina/ritmo-2.0",
     },
     {
-        title: "Ticketing System",
+        title: "INVENTORY",
         description:
-            "A web-based IT ticketing platform that allows end users to submit support requests and track their status. Led all front-end development for the project.",
-        techStack: ["Express.js", "jQuery", "Tailwind CSS"],
-        role: "Front-End Developer",
-        liveDemo: "#",
-        github: "hhttps://github.com/tianmrpg/Ticketing-System-NDH.git",
+            "An inventory management system for tracking assets, stock levels, and reporting workflows with a browser-based admin interface.",
+        techStack: ["EJS", "JavaScript", "CSS"],
+        github: "https://github.com/johnkarlmolina/INVENTORY",
     },
     {
-        title: "Inventory System",
+        title: "Portfolio",
         description:
-            "A streamlined inventory management system for tracking assets and stock levels. Contributed extensively to the front-end interface and UX flow.",
-        techStack: ["Express.js", "jQuery", "Tailwind CSS"],
-        role: "Front-End Developer",
-        liveDemo: "#",
-        github: "https://github.com/johnkarlmolina/INVENTORY.git",
+            "My personal portfolio site for presenting experience, projects, skills, and contact details.",
+        techStack: ["TypeScript", "CSS"],
+        github: "https://github.com/johnkarlmolina/Portfolio",
     },
     {
-        title: "IoT Parking Diorama",
+        title: "Help-Desk-System",
         description:
-            "A physical prototype of a smart parking system using Arduino, IR sensors, servo motors, LCD display, and a buzzer to simulate automated parking slot detection.",
-        techStack: ["Arduino", "IR Sensor", "Servo Motor", "LCD", "Buzzer"],
-        liveDemo: "#",
+            "A help desk platform for support requests, ticket handling, and administrative tracking.",
+        techStack: ["EJS", "JavaScript"],
+        github: "https://github.com/johnkarlmolina/Help-Desk-System",
+    },
+    {
+        title: "qcu-grading-calculator",
+        description:
+            "A grading calculator for QCU-related academic evaluation workflows, built as a TypeScript web app.",
+        techStack: ["TypeScript", "CSS", "HTML"],
+        github: "https://github.com/johnkarlmolina/qcu-grading-calculator",
     },
 ];
