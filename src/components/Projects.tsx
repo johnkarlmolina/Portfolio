@@ -3,6 +3,7 @@ import { projects } from "../data/projects";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { GitHubCalendar } from 'react-github-calendar';
 
 const techColors: Record<string, string> = {
     HTML: "bg-orange-500/10 text-orange-400 border-orange-500/20",
@@ -91,6 +92,30 @@ export default function Projects() {
                             </div>
                         </div>
                     ))}
+                </div>
+
+
+
+                <div className="mt-20">
+                    <div className="text-center mb-10">
+                        <h3 className="text-2xl font-bold text-white mb-2">My GitHub Activity</h3>
+                        <p className="text-zinc-400">A snapshot of my code contributions and open-source involvement.</p>
+                    </div>
+                    <div className="flex justify-center bg-zinc-900/50 dark:bg-zinc-900/50 light:bg-white backdrop-blur-sm border border-zinc-800 dark:border-zinc-800 light:border-zinc-200 rounded-3xl p-6 sm:p-10 shadow-sm overflow-x-auto">
+                        <GitHubCalendar username="johnkarlmolina" colorScheme="dark" />
+                    </div>
+                </div>
+
+                <div className="mt-12 text-center">
+                    <a
+                        href="https://github.com/johnkarlmolina"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all duration-300"
+                    >
+                        <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
+                        View more projects on GitHub
+                    </a>
                 </div>
             </div>
         </section>

@@ -145,6 +145,13 @@ export const skillGroups: SkillGroup[] = [
                 proficiency: 90,
                 icon: "fa-solid fa-code",
             },
+            {
+                name: "Anti Gravity",
+                category: "Dev Tools",
+                description: "Agentic AI coding assistant designed by Google DeepMind.",
+                proficiency: 85,
+                icon: "fa-solid fa-robot",
+            },
         ],
     },
 ];
